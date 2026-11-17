@@ -1,0 +1,81 @@
+import { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion} from '../models/triviabook.js';
+
+function createHttpError(statusCode, message) {
+  const error = new Error(message);
+  error.statusCode = statusCode;
+  return error;
+}
+
+async function createQuestionController(req, res, next) {
+  try {
+    const { topic, question, answer, difficulty } = req.body;
+    if (!topic || !question || !answer || !difficulty) {
+      return next(createHttpError(400, 'All fields are required'));
+    }
+    const questionObj = await createQuestion(topic, question, answer, difficulty);
+    res.status(201).json(questionObj);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getAllTopicsController(req, res, next) {
+  try {
+    const topics = await getAllTopics();
+    res.status(200).json(topics);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getQuestionByIdController(req, res, next) {
+  try {
+    const { id } = req.params;
+    const question = await getQuestionById(id);
+    if (!question) {
+      return next(createHttpError(404, 'Question not found'));
+    }
+    res.status(200).json(question);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getQuestionsByTopicController(req, res, next) {
+  try {
+    const { topic } = req.params;
+    const questions = await getQuestionsByTopic(topic);
+    res.status(200).json(questions);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getQuestionsByDifficultyController(req, res, next) {
+  try {
+    const { difficulty } = req.params;
+    const questions = await getQuestionsByDifficulty(difficulty);
+    res.status(200).json(questions);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function getRandomQuestionController(req, res, next) {
+  try {
+    const question = await getRandomQuestion();
+    res.status(200).json(question);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+export {
+  createQuestionController,
+  getAllTopicsController,
+  getQuestionByIdController,
+  getQuestionsByTopicController,
+  getQuestionsByDifficultyController,
+  getRandomQuestionController
+};
