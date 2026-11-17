@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import errorHandler from './middleware/errorHandler.js';
 import logger from './middleware/logger.js';
-import bookRouter from './routes/triviabook.js';
+import triviabookRouter from './routes/triviabook.js';
 
 const app = express();
 app.use(logger);
