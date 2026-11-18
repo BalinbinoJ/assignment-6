@@ -11,10 +11,10 @@ import {
 const router = Router();
 
 router.post('/', createQuestionController);
-router.get('/', getAllTopicsController);
+router.get('/topics', getAllTopicsController);
 router.get('/:id', getQuestionByIdController);
-router.get('/topic/:topic', getQuestionsByTopicController);
-router.get('/difficulty/:difficulty', getQuestionsByDifficultyController);
+router.get('/topics/:topic', getQuestionsByTopicController);
+router.get('/topics/:topic/:difficulty', getQuestionsByDifficultyController);
 router.get('/random', getRandomQuestionController);
 
 export default router;
