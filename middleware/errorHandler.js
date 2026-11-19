@@ -1,3 +1,11 @@
+/*
+  Name: Justice Tolentino
+  Date: 11.18.2026
+  CSC 372-01
+
+  This is the errorHandler.js page for my express crud API assignment. This is where the error handling middleware is defined.
+*/
+
 function errorHandler(error, req, res, next) {
   if (res.headersSent) {
     return next(error);

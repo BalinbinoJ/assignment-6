@@ -1,3 +1,12 @@
+/*
+  Name: Justice Tolentino
+  Date: 11.18.2026
+  CSC 372-01
+
+  This is the controllers/triviabook.js page for my express crud API assignment. This is where the controller functions for handling triviabook requests are defined.
+*/
+
+
 import { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion, getLimitedQuestionsByTopic} from '../models/triviabook.js';
 
 function createHttpError(statusCode, message) {

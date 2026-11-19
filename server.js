@@ -1,3 +1,11 @@
+/*
+  Name: Justice Tolentino
+  Date: 11.18.2026
+  CSC 372-01
+
+  This is the server.js page for my express crud API assignment. This is where the server is set up.
+*/
+
 import express from 'express';
 import cors from 'cors';
 import errorHandler from './middleware/errorHandler.js';

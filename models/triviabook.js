@@ -1,3 +1,11 @@
+/*
+  Name: Justice Tolentino
+  Date: 11.18.2026
+  CSC 372-01
+
+  This is the models/triviabook.js page for my express crud API assignment. This is where the methods are defined for the postgres database in Neon.
+*/
+
 import pool from './db.js';
 
 async function createQuestion(topic, question, answer, difficulty) {

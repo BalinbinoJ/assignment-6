@@ -1,3 +1,11 @@
+/*
+  Name: Justice Tolentino
+  Date: 11.18.2026
+  CSC 372-01
+
+  This is the routes/triviabook.js page for my express crud API assignment. This is where the endpoints for the triviabook API are set up.
+*/
+
 import { Router } from 'express';
 import {
   createQuestionController,

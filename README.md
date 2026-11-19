@@ -21,7 +21,7 @@ repository for assignment-6 of CSC372
 
 2. Install dependencies:
    ```bash
-   npm install pg express init
+   npm install pg express init cors
    ```
 
 3. Create a `.env` file with your database connection string:
