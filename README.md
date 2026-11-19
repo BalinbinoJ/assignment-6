@@ -32,7 +32,7 @@ Stores questions within the triviabook.
 
 2. Install dependencies:
    ```bash
-   npm install pg express init cors
+   npm install
    ```
 
 3. Create a `.env` file with your database connection string:
@@ -46,3 +46,6 @@ Stores questions within the triviabook.
    ```
 
    The server will run on `http://localhost:3000` by default.
+
+render link:
+https://assignment-6-n9jl.onrender.com/
