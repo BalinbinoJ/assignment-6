@@ -22,6 +22,9 @@ async function createQuestionController(req, res, next) {
 async function getAllTopicsController(req, res, next) {
   try {
     const topics = await getAllTopics();
+    if (!topics || topics.length === 0) {
+      return next(createHttpError(404, 'No topics found'));
+    }
     res.status(200).json(topics);
   } catch (error) {
     next(error);
@@ -45,6 +48,9 @@ async function getQuestionsByTopicController(req, res, next) {
   try {
     const { topic } = req.params;
     const questions = await getQuestionsByTopic(topic);
+    if (!questions || questions.length === 0) {
+      return next(createHttpError(404, 'Topic not found'));
+    }
     res.status(200).json(questions);
   } catch (error) {
     next(error);
@@ -55,6 +61,9 @@ async function getLimitedQuestionsByTopicController(req, res, next) {
   try {
     const { topic, limit } = req.params;
     const questions = await getLimitedQuestionsByTopic(topic, parseInt(limit));
+    if (!questions || questions.length === 0) {
+      return next(createHttpError(404, 'Topic not found or no questions available'));
+    }
     res.status(200).json(questions);
   } catch (error) {
     next(error);
@@ -65,6 +74,9 @@ async function getQuestionsByDifficultyController(req, res, next) {
   try {
     const { difficulty } = req.params;
     const questions = await getQuestionsByDifficulty(difficulty);
+    if (!questions || questions.length === 0) {
+      return next(createHttpError(404, 'No questions found for the specified topic and difficulty'));
+    }
     res.status(200).json(questions);
   } catch (error) {
     next(error);
@@ -74,6 +86,9 @@ async function getQuestionsByDifficultyController(req, res, next) {
 async function getRandomQuestionController(req, res, next) {
   try {
     const question = await getRandomQuestion();
+    if (!question) {
+      return next(createHttpError(404, 'No questions available'));
+    }
     res.status(200).json(question);
   } catch (error) {
     next(error);
