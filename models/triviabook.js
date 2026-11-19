@@ -9,7 +9,7 @@ async function createQuestion(topic, question, answer, difficulty) {
 }
 
 async function getAllTopics() {
-  const result = await pool.query('SELECT topic FROM triviabook');
+  const result = await pool.query('SELECT DISTINCT topic FROM triviabook');
   return result.rows;
 }
 
@@ -29,9 +29,7 @@ async function getQuestionsByDifficulty(difficulty) {
 }
 
 async function getRandomQuestion() {
-  const result = await pool.query(
-    'SELECT question FROM triviabook ORDER BY RANDOM() LIMIT 1'
-  );
+  const result = await pool.query('SELECT question FROM triviabook ORDER BY RANDOM() LIMIT 1');
   return result.rows[0];
 }
 
