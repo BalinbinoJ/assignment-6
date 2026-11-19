@@ -11,6 +11,17 @@ repository for assignment-6 of CSC372
 - `GET /api/triviabook/topic/:topic/limit/:limit` - Retrieve a specific number of questions under a particular topic
 - `GET /api/triviabook/random` - Retrieve a random question
 
+### Table: `triviabook`
+Stores questions within the triviabook.
+
+| Column Name | Data Type | Constraints | Description |
+| :--- | :--- | :--- | :--- |
+| `id` | `SERIAL` | `PRIMARY KEY`| Unique identifier for each question. |
+| `topic` | `TEXT` | `NOT NULL` | Topic the question is affiliated with |
+| `question` | `TEXT` | | The question within the table |
+| `answer` | `TEXT` |  | The answer to the question |
+| `difficulty` | `TEXT` | `NOT NULL` | The difficulty level of the question |
+
 ## Setup
 
 1. Clone the repository:
