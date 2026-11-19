@@ -8,6 +8,7 @@ async function createQuestion(topic, question, answer, difficulty) {
   return result.rows[0];
 }
 
+
 async function getAllTopics() {
   const result = await pool.query('SELECT DISTINCT topic FROM triviabook');
   return result.rows;
