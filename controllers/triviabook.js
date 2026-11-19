@@ -1,4 +1,4 @@
-import { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion} from '../models/triviabook.js';
+import { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion, getLimitedQuestionsByTopic} from '../models/triviabook.js';
 
 function createHttpError(statusCode, message) {
   const error = new Error(message);
@@ -51,6 +51,16 @@ async function getQuestionsByTopicController(req, res, next) {
   }
 }
 
+async function getLimitedQuestionsByTopicController(req, res, next) {
+  try {
+    const { topic, limit } = req.params;
+    const questions = await getLimitedQuestionsByTopic(topic, parseInt(limit));
+    res.status(200).json(questions);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function getQuestionsByDifficultyController(req, res, next) {
   try {
     const { difficulty } = req.params;
@@ -77,5 +87,6 @@ export {
   getQuestionByIdController,
   getQuestionsByTopicController,
   getQuestionsByDifficultyController,
-  getRandomQuestionController
+  getRandomQuestionController,
+  getLimitedQuestionsByTopicController
 };

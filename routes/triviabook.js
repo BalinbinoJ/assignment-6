@@ -5,16 +5,18 @@ import {
   getQuestionByIdController,
   getQuestionsByTopicController,
   getQuestionsByDifficultyController,
-  getRandomQuestionController
+  getRandomQuestionController,
+  getLimitedQuestionsByTopicController
 } from '../controllers/triviabook.js';
 
 const router = Router();
 
 router.post('/', createQuestionController);
-router.get('/topics', getAllTopicsController);
+router.get('/topic', getAllTopicsController);
 router.get('/:id', getQuestionByIdController);
-router.get('/topics/:topic', getQuestionsByTopicController);
-router.get('/topics/:topic/:difficulty', getQuestionsByDifficultyController);
+router.get('/topic/:topic', getQuestionsByTopicController);
+router.get('/topic/:topic/:difficulty', getQuestionsByDifficultyController);
 router.get('/random', getRandomQuestionController);
+router.get('/topic/:topic/limit/:limit', getLimitedQuestionsByTopicController);
 
 export default router;

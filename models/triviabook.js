@@ -33,4 +33,9 @@ async function getRandomQuestion() {
   return result.rows[0];
 }
 
-export { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion };
+async function getLimitedQuestionsByTopic(topic, limit) {
+  const result = await pool.query('SELECT question FROM triviabook WHERE topic = $1 LIMIT $2', [topic, limit]);
+  return result.rows;
+}
+
+export { createQuestion, getAllTopics, getQuestionById, getQuestionsByTopic, getQuestionsByDifficulty, getRandomQuestion, getLimitedQuestionsByTopic };
