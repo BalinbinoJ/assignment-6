@@ -13,10 +13,10 @@ const router = Router();
 
 router.post('/', createQuestionController);
 router.get('/topic', getAllTopicsController);
+router.get('/random', getRandomQuestionController);
 router.get('/:id', getQuestionByIdController);
 router.get('/topic/:topic', getQuestionsByTopicController);
 router.get('/topic/:topic/:difficulty', getQuestionsByDifficultyController);
-router.get('/random', getRandomQuestionController);
 router.get('/topic/:topic/limit/:limit', getLimitedQuestionsByTopicController);
 
 export default router;
